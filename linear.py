@@ -24,4 +24,3 @@ plt.scatter(x,y,label='original data')
 plt.plot(x,output,label='predicted data')
 
 plt.show()
-# plt.plot()
