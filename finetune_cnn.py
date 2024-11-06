@@ -49,7 +49,7 @@ for epoch in range(num_epoch):
     for image, label in train_loader:
 
         output =  model(image)
-        loss  =  criterian(output,label)
+        loss  =  criterion(output,label)
         loss.backward()
         optimizer.step()
         optimizer.zero_grad()
@@ -69,3 +69,7 @@ with torch.no_grad():
         correct += (predicted ==  label).sum().item()
     print(f'Accuracy: {100*(correct/total)}')
 
+
+if accuracy>best_val_accuracy:
+    best_val_accuracy=accuracy
+    torch.save(model.state_dict(),'best_model.pth')
