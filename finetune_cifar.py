@@ -14,8 +14,8 @@ trans = transforms.Compose([transforms.ToTensor(),
                        transforms.RandomRotation(10)
                        ])
 
-dataset  =  ImageFolder(root=r"C:\Users\student\Downloads\archive\PlantVillage",transform=trans)
-train_data,val_data=random_split(dataset,[0.8,0.2])
+train_data=CIFAR10(root='./cifar',train=True,download=True,transform=trans)
+val_data=CIFAR10(root='./cifar',train=False,download=True,transform=trans)
 
 
 train_loader=DataLoader(train_data,batch_size=32,shuffle=True)
