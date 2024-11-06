@@ -6,8 +6,8 @@ import gradio  as gr
 
 
 #load pretrained model &  finetune it on the target dataset
-# model=models.resnet18(pretrained=True)
-# model.fc=nn.Linear(model.fc.in_features,10)
+model=models.resnet18(pretrained=True)
+model.fc=nn.Linear(model.fc.in_features,15)
 
 trans = transforms.Compose([transforms.ToTensor(),
                        transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5)),
@@ -16,7 +16,7 @@ trans = transforms.Compose([transforms.ToTensor(),
                        ])
 
 class_names=['c1','c2','c3','c4','c5','c6','c7','c8','c9']
-model=torch.load('best_model.pth')
+model.load_state_dict(torch.load('best_model.pth',weights_only=True))
 def predict(image):
     image=trans(image).unsqueeze(0)
 
