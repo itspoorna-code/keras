@@ -81,5 +81,5 @@ with torch.no_grad():
         correct += (predicted ==  label).sum().item()
     print(f'Accuracy: {100*(correct/total)}')
 
-plt.plot(loss)
-plt.show()
+# plt.plot(loss)
+# plt.show()
